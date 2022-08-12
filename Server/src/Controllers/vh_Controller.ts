@@ -4,20 +4,20 @@ import pool from '../Database';
  
 class Vh_Controller {
     public  list(req:Request, res:Response){
-        const games =  pool.query('SELECT * FROM registro');
+        const games =  pool.query('SELECT * FROM registro'); 
         res.json(games); 
     }
     
-   /* public getOne(req:Request, res:Response){
+    public getOne(req:Request, res:Response){
         const {id} = req.params;
-        const games = [pool.query('SELECT * FROM registro WHERE id = ?', [id])];
+        const games = pool.query('SELECT * FROM registro WHERE id = ?', [id]);
         if (games.length > 0) {
             return res.json(games[0]);
         }
         res.status(404).json({text: 'the game not exist'});
         
     }
-    */
+    
     public create(req:Request, res:Response){
         pool.query('INSERT INTO registro set ?', [req.body]);
         res.json({text: 'create a tarifa'});
