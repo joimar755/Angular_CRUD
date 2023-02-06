@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class VhfService {
 
-  API = 'http://localhost:3000/api/vh';
+  API = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 

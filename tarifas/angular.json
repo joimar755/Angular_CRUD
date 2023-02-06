@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "tarifas"
+  "defaultProject": "tarifas",
+  "cli": {
+    "analytics": "3a0183fd-fc5b-4a49-b62a-16790d725569"
+  }
 }

@@ -8,4 +8,5 @@ pool.getConnection(function(err,conn){
 // Connection is automatically released when query resolves
 }); 
 
+
 export default pool;

@@ -11,9 +11,9 @@ class  Vhrout {
     config(): void{
         this.router.get('/',vhController.list);  
         this.router.get('/:id',vhController.getOne); 
-        this.router.post('/',vhController.create );
-        this.router.delete('/:id',vhController.delete ); 
-        this.router.put('/:id',vhController.update );
+        this.router.post('/',vhController.create);
+        this.router.delete('/:id',vhController.delete); 
+        this.router.put('/:id',vhController.update);
     }
 }
 
