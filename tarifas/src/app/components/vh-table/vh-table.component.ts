@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { VhfService } from '../../services/vhf.service';
 
 
@@ -10,7 +11,7 @@ import { VhfService } from '../../services/vhf.service';
 export class VhTableComponent implements OnInit {
 
    games: any=[];
-
+   total = 0;
 
 
   constructor(private vh: VhfService) { }
@@ -20,8 +21,12 @@ export class VhTableComponent implements OnInit {
      (res: any): void => {
         this.games = res;
         console.log(this.games);
+        for (let i = 0; i < this.games.length; i++) {
+          this.total += this.games[i].valor;
+         }
       },
    );
+
   }
 
 }

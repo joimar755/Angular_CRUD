@@ -1,6 +1,6 @@
-<table class="table  table-striped">
+<table class="table table-hover  table-warning">
     <thead>
-        <tr>
+        <tr style="color:black">
             <th scope="">#</th>
             <th scope="">Tipo_Vehiculo</th>
             <th scope="">placa</th>
@@ -9,14 +9,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="table table-dark" *ngFor="let game of games;">
-          <td>{{game.id}}</td>
+        <tr style="background-color: rgba(0, 0, 0, 0.671);" class="table  border border-warning" *ngFor="let game of games;">
+          <th scope="row">{{game.id}}</th>
           <td>{{game.nombre}}</td>
           <td>{{game.placa}}</td>
           <td>{{game.valor}}</td>
           <td>{{game.modelo}}</td>
         </tr>
-
+       <tr style="color: black;">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>$total: {{total}}</strong></td>
+       </tr>
     </tbody>
 </table>
 

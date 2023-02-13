@@ -18,7 +18,9 @@
     "mysql": "github:mysqljs/mysql",
     "mysql2": "^2.3.3",
     "promise-mysql": "^5.2.0",
-    "promise-mysql2": "^1.0.0"
+    "promise-mysql2": "^1.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

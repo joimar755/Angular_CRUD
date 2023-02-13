@@ -1,3 +1,4 @@
+
 CREATE DATABASE tarifa;
 
 CREATE TABLE IF NOT EXISTS registro(
