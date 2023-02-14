@@ -16,7 +16,7 @@ export class VhTableComponent implements OnInit {
 
   constructor(private vh: VhfService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {a
    this.vh.getvh().subscribe(
      (res: any): void => {
         this.games = res;
