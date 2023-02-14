@@ -2,40 +2,48 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.vhController = void 0;
-var Database_1 = __importDefault(require("../Database"));
-var Vh_Controller = /** @class */ (function () {
-    function Vh_Controller() {
+const Database_1 = __importDefault(require("../Database"));
+class Vh_Controller {
+    list(req, res) {
+        const sql = "SELECT * FROM registro";
+        Database_1.default.query(sql, (error, results) => {
+            if (error)
+                throw error;
+            //console.log(result);
+            res.json(results);
+        });
     }
-    Vh_Controller.prototype.list = function (req, res) {
-        var games = Database_1["default"].query('SELECT * FROM registro', [req.body]);
-        res.json(games);
-    };
-    Vh_Controller.prototype.getOne = function (req, res) {
-        var id = req.params.id;
-        var games = [Database_1["default"].query('SELECT * FROM registro WHERE id = ?', [id])];
-        if (games.length > 0) {
-            return res.json(games[0]);
+    getOne(req, res) {
+        const { id } = req.params;
+        const games = Database_1.default.query("SELECT * FROM registro WHERE id = ?", [id]);
+        if (games) {
+            return res.json(games);
         }
-        res.status(404).json({ text: 'the game not exist' });
-    };
-    Vh_Controller.prototype.create = function (req, res) {
-        Database_1["default"].query('INSERT INTO registro set ?', [req.body]);
-        res.json({ text: 'create a tarifa' });
-    };
-    Vh_Controller.prototype["delete"] = function (req, res) {
-        var id = req.params.id;
-        Database_1["default"].query('DELETE FROM registro WHERE id = ?', [id]);
-        res.json({ text: 'delete a tarifa: ' });
-    };
-    Vh_Controller.prototype.update = function (req, res) {
+        res.status(404).json({ text: "the game not exist" });
+    }
+    create(req, res) {
+        const { nombre, placa, valor, modelo } = req.body;
+        const sql = "INSERT INTO registro (nombre,placa,valor,modelo) VALUES (?, ?, ?, ?)";
+        Database_1.default.query(sql, [nombre, placa, valor, modelo], (error, results) => {
+            if (error)
+                throw error;
+            console.log(results);
+            res.json({ text: "create a tarifa" });
+        });
+    }
+    delete(req, res) {
+        const { id } = req.params;
+        Database_1.default.query("DELETE FROM registro WHERE id = ?", [id]);
+        res.json({ text: "delete a tarifa: " });
+    }
+    update(req, res) {
         //res.json({text: 'update a tarifa: ' + req.params.id});
-        var id = req.params.id;
-        Database_1["default"].query('UPDATE registro set ? WHERE id = ?', [req.body, id]);
-        res.json({ text: 'actualizado a tarifa: ' });
-    };
-    return Vh_Controller;
-}());
+        const { id } = req.params;
+        Database_1.default.query("UPDATE registro set ? WHERE id = ?", [req.body, id]);
+        res.json({ text: "actualizado a tarifa: " });
+    }
+}
 exports.vhController = new Vh_Controller();
-exports["default"] = exports.vhController;
+exports.default = exports.vhController;
